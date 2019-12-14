@@ -11,6 +11,8 @@ A simple python script for plotting the current live location of the Internation
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Kinjalrk2k/ISS-Location)
 
+![Screenshot](https://user-images.githubusercontent.com/34955854/70851930-b278bd00-1ec1-11ea-9a66-b93f541eab34.png)
+
 ### Dependencies
 [Click here](https://github.com/Kinjalrk2k/pdfTools/network/dependencies) to explore the dependency graph.
 
