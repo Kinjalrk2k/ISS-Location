@@ -1,4 +1,3 @@
-
 # for matplotlib stuffs
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox, TextArea
