@@ -22,6 +22,7 @@ A simple python script for plotting the current live location of the Internation
 |````urllib3````| 1.24.2 |
 | ```json5```  | 0.8.5  |
 |````jsonschema````| 3.0.2 |
+|````Pillow````|6.2.0|
 
 ### Notes
 This project was created and tested under Windows, and is expected to work fully in other systems too.
