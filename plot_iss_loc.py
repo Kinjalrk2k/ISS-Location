@@ -8,16 +8,18 @@ import json
 import time
 
 # for os
-import sys
+import sys, os
 
 
 
 # setting map image
-map_image = 'assets\\1024px-Land_shallow_topo_2048.jpg'
+# map_image = 'assets\\1024px-Land_shallow_topo_2048.jpg'
+map_image = os.path.join('assets', '1024px-Land_shallow_topo_2048.jpg')
 map_ = plt.imread(map_image)
 
 # setting iss icon image
-iss_image = 'assets\\iss.png'
+# iss_image = 'assets\\iss.png'
+iss_image = os.path.join('assets', 'iss.png')
 iss_ = plt.imread(iss_image)
 
 # initialising past locations history
@@ -105,12 +107,18 @@ ax.imshow(map_, alpha=0.65, extent = BBox)
 
 # iss icon
 im = OffsetImage(iss_, zoom=z)
-
-
+fig_num = fig.number
 
 start_time = None
 while True:
-    pt, t = get_iss_loc()   #   use API to get iss location and timestamp
+    try:
+        pt, t = get_iss_loc()   #   use API to get iss location and timestamp
+    except Exception as e:
+        print('An Exception was raised while requesting through API. Details are as follows:')
+        print(e)
+        input('Press any key to quit...')
+        sys.exit()
+
 
     if start_time is None:  #   ensure single time usage
         start_time = t
@@ -138,9 +146,13 @@ while True:
     plt.pause(5)
 
     # TODO: exit if plot is closed - needs to be fixed
-    # if not plt.fignum_exists(fig.number):
-    #     fig.savefig('run.png')
-    #     sys.exit()
+    if not plt.fignum_exists(fig_num):
+        if not os.path.exists('saved_runs'):
+            os.mkdir('saved_runs')
+        loc = os.path.join('saved_runs', f'run{start_time}')
+        print(f'Saving plot as: {loc}')
+        fig.savefig(loc)
+        sys.exit()
     
     ab.remove() # remove previous iss icon
     ab2.remove() # remove previous latitude, longitude annonate
